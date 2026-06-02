@@ -1,0 +1,168 @@
+/* ──────────────────────────────────────────────────────────────────────────
+   Mimi (penguin chick) — motion keyframes.
+   Idle breathing + blinking by default; each mood adds one small gesture
+   (a bounce, a droop, a slow snooze) plus floating accessories. All micro-
+   motions are 2–5s loops and collapse to a calm static pose under
+   prefers-reduced-motion.
+   ────────────────────────────────────────────────────────────────────────── */
+
+.pg-body {
+  transform-origin: 50% 90%;
+  will-change: transform;
+}
+
+.m-breathe { animation: mBreathe 4.5s ease-in-out infinite; }
+@keyframes mBreathe {
+  0%, 100% { transform: scale(1, 1) translateY(0); }
+  50% { transform: scale(1.02, 0.99) translateY(-1.5px); }
+}
+
+.m-bounce { animation: mBounce 2.6s ease-in-out infinite; }
+@keyframes mBounce {
+  0%, 100% { transform: translateY(0) scale(1, 1); }
+  42% { transform: translateY(-8px) scale(0.99, 1.015); }
+  58% { transform: translateY(-8px); }
+  82% { transform: translateY(0) scale(1.02, 0.985); }
+}
+
+.m-floaty { animation: mFloaty 4s ease-in-out infinite; }
+@keyframes mFloaty {
+  0%, 100% { transform: translateY(0) rotate(-1deg); }
+  50% { transform: translateY(-6px) rotate(1deg); }
+}
+
+.m-tilt { animation: mTilt 4.5s ease-in-out infinite; }
+@keyframes mTilt {
+  0%, 100% { transform: rotate(-4deg) translateY(0); }
+  50% { transform: rotate(3deg) translateY(-2px); }
+}
+
+.m-noddy { animation: mNoddy 1.9s ease-in-out infinite; }
+@keyframes mNoddy {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px) scale(1.008, 0.992); }
+}
+
+.m-sway { animation: mSway 5s ease-in-out infinite; }
+@keyframes mSway {
+  0%, 100% { transform: rotate(-2.2deg) translateY(1px); }
+  50% { transform: rotate(2.2deg) translateY(1px); }
+}
+
+.m-shiver { animation: mShiver 0.34s ease-in-out infinite; }
+@keyframes mShiver {
+  0%, 100% { transform: translateX(-1px); }
+  50% { transform: translateX(1px); }
+}
+
+.m-snooze { animation: mSnooze 5.5s ease-in-out infinite; }
+@keyframes mSnooze {
+  0%, 100% { transform: scale(1, 1) rotate(-3deg) translateY(1px); }
+  50% { transform: scale(1.025, 0.98) rotate(-3deg) translateY(4px); }
+}
+
+.m-excited { animation: mExcited 0.95s ease-in-out infinite; }
+@keyframes mExcited {
+  0%, 100% { transform: translateY(0) scale(1, 1); }
+  32% { transform: translateY(-11px) scale(0.97, 1.04); }
+  60% { transform: translateY(0) scale(1.04, 0.96); }
+}
+
+.mimi-eyes.blink {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: mBlink 4.6s infinite;
+}
+@keyframes mBlink {
+  0%, 7%, 100% { transform: scaleY(1); }
+  3.2%, 4.6% { transform: scaleY(0.1); }
+}
+
+.mimi-eyes.pulse {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: mHeartPulse 1.3s ease-in-out infinite;
+}
+@keyframes mHeartPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+}
+
+.mimi-curl {
+  transform-box: fill-box;
+  transform-origin: 100px 38px;
+  animation: mCurl 3.6s ease-in-out infinite;
+}
+@keyframes mCurl {
+  0%, 100% { transform: rotate(-5deg); }
+  50% { transform: rotate(6deg); }
+}
+
+.acc-twinkle {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: mTwinkle 1.8s ease-in-out infinite;
+}
+@keyframes mTwinkle {
+  0%, 100% { transform: scale(1) rotate(0); }
+  50% { transform: scale(1.18) rotate(20deg); }
+}
+
+.acc-think { animation: accThink 2.4s ease-in-out infinite; }
+@keyframes accThink {
+  0% { opacity: 0.2; }
+  50% { opacity: 1; }
+  100% { opacity: 0.2; }
+}
+
+.acc-wave { animation: accWave 1.8s ease-out infinite; }
+.acc-wave.d2 { animation-delay: 0.5s; }
+@keyframes accWave {
+  0% { opacity: 0; transform: translateX(-4px); }
+  40% { opacity: 0.9; }
+  100% { opacity: 0; transform: translateX(6px); }
+}
+
+.acc-rise { animation: accRise 2.8s ease-in infinite; opacity: 0; }
+.acc-rise.d2 { animation-delay: 0.9s; }
+.acc-rise.d3 { animation-delay: 1.8s; }
+@keyframes accRise {
+  0% { opacity: 0; transform: translateY(6px) scale(0.7); }
+  25% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(-14px) scale(1); }
+}
+
+.acc-tear {
+  transform-box: fill-box;
+  transform-origin: top;
+  animation: accTear 3.2s ease-in infinite;
+  opacity: 0;
+}
+@keyframes accTear {
+  0%, 55% { opacity: 0; transform: translateY(0) scaleY(0.5); }
+  70% { opacity: 0.9; transform: translateY(0) scaleY(1); }
+  100% { opacity: 0; transform: translateY(24px) scaleY(1.2); }
+}
+
+.acc-confetti {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: accConfetti 2.2s ease-in infinite;
+  opacity: 0;
+}
+.acc-confetti.d1 { animation-delay: 0.4s; }
+.acc-confetti.d2 { animation-delay: 0.8s; }
+@keyframes accConfetti {
+  0% { opacity: 0; transform: translateY(-6px); }
+  15% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(32px) rotate(160deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pg-body,
+  .mimi-eyes,
+  .mimi-curl,
+  [class*="acc-"] {
+    animation: none !important;
+  }
+}
