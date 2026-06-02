@@ -25,7 +25,7 @@
  *  - listening   → curious raised brows + gaze up; attentive lean sway, the
  *                  sprout perks, the arms lift out, sound-wave ripples.
  *  - thinking    → small pursed mouth + gaze up; a clear bob, the sprout
- *                  droops aside, a hand lifts, a floating "?".
+ *                  droops aside, a hand lifts, a pair of twinkling sparkles.
  *  - celebrating → happy ^_^ eyes + open smile; a squash-&-stretch hop, both
  *                  arms wave up, the sprout bounces, a heart drifts up.
  *  - resting     → eyes fully closed + peaceful mouth; a slow sleepy sink, the
@@ -392,11 +392,12 @@ export default function Mimi({
       {/* Floating-particle keyframes — CSS-driven so they animate reliably
           (framer's opacity channel stalls under many concurrent loops). */}
       <style>{`
-        @keyframes mimiQ {
-          0%   { opacity: 0; transform: translateY(4px) scale(0.7); }
-          38%  { opacity: 1; transform: translateY(0) scale(1); }
-          72%  { opacity: 1; transform: translateY(-2px) scale(1); }
-          100% { opacity: 0; transform: translateY(-8px) scale(0.85); }
+        /* thinking sparkle — a soft star that blinks in, twinkles, fades out */
+        @keyframes mimiSparkle {
+          0%   { opacity: 0;   transform: scale(0.2) rotate(-25deg); }
+          35%  { opacity: 1;   transform: scale(1) rotate(0deg); }
+          65%  { opacity: 0.9; transform: scale(0.85) rotate(8deg); }
+          100% { opacity: 0;   transform: scale(0.2) rotate(25deg); }
         }
         @keyframes mimiZ1 {
           0%   { opacity: 0;    transform: translateY(0) scale(0.7); }
@@ -430,24 +431,31 @@ export default function Mimi({
       {/* soft ground shadow — stays planted (doesn't lift with the hop) */}
       <ellipse cx={100} cy={189} rx={46} ry={8} fill={C.ao} opacity={0.16} filter={`url(#${id("blur")})`} />
 
-      {/* thinking "?" */}
-      <text
-        x={154}
-        y={54}
-        textAnchor="middle"
-        fontSize={26}
-        fontWeight={700}
-        fontFamily="ui-rounded, system-ui, sans-serif"
-        fill={C.bodyLo}
-        style={{
-          transformBox: "fill-box",
-          transformOrigin: "center",
-          opacity: reduce ? (cfg.sparkle ? 0.9 : 0) : 0,
-          animation: cfg.sparkle && !reduce ? "mimiQ 2.6s ease-in-out infinite" : "none",
-        }}
-      >
-        ?
-      </text>
+      {/* thinking — a soft pair of twinkling sparkles near the head */}
+      <g>
+        {/* main sparkle (4-point star) */}
+        <path
+          d="M152 39 L155.3 46.7 L163 50 L155.3 53.3 L152 61 L148.7 53.3 L141 50 L148.7 46.7 Z"
+          fill={C.bodyLo}
+          style={{
+            transformBox: "fill-box",
+            transformOrigin: "center",
+            opacity: reduce ? (cfg.sparkle ? 0.9 : 0) : 0,
+            animation: cfg.sparkle && !reduce ? "mimiSparkle 2.2s ease-in-out infinite" : "none",
+          }}
+        />
+        {/* smaller companion sparkle, offset + delayed so the two blink in turn */}
+        <path
+          d="M170 58 L171.8 62.2 L176 64 L171.8 65.8 L170 70 L168.2 65.8 L164 64 L168.2 62.2 Z"
+          fill={C.bodyMid}
+          style={{
+            transformBox: "fill-box",
+            transformOrigin: "center",
+            opacity: reduce ? (cfg.sparkle ? 0.7 : 0) : 0,
+            animation: cfg.sparkle && !reduce ? "mimiSparkle 2.2s ease-in-out 1.1s infinite" : "none",
+          }}
+        />
+      </g>
 
       {/* resting "z" (small, leads) */}
       <text
