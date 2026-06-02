@@ -1,0 +1,227 @@
+/* ──────────────────────────────────────────────────────────────────────────
+   Mimi (Sprout) — motion.
+   Ported verbatim from the Mimi Sprout.html prototype. Idle breathing/blinking
+   plus one small gesture per mood, secondary motion on the sprout/arms/eyes,
+   and floating accessory loops. All transform/opacity based and reduced-motion
+   safe — no framework needed.
+   ────────────────────────────────────────────────────────────────────────── */
+
+.sprout-body {
+  transform-origin: 50% 89%;
+  will-change: transform;
+}
+
+/* ── per-mood body micro-motion ─────────────────────────────────────────── */
+.s-breathe {
+  animation: spBreathe 3.6s ease-in-out infinite;
+}
+@keyframes spBreathe {
+  0%, 100% { transform: scaleX(1) scaleY(1) translateY(0); }
+  50% { transform: scaleX(0.99) scaleY(1.045) translateY(-3px); }
+}
+.s-bounce {
+  animation: spBounce 2.6s ease-in-out infinite;
+}
+@keyframes spBounce {
+  0%, 100% { transform: translateY(0) scaleX(1) scaleY(1); }
+  42% { transform: translateY(-8px) scaleX(0.99) scaleY(1.03); }
+  58% { transform: translateY(-8px); }
+  82% { transform: translateY(0) scaleX(1.02) scaleY(0.98); }
+}
+.s-lean {
+  animation: spLean 3.2s ease-in-out infinite;
+}
+@keyframes spLean {
+  0%, 100% { transform: rotate(-9deg) scaleY(1.02); }
+  50% { transform: rotate(-3deg) scaleY(1.02); }
+}
+.s-noddy {
+  animation: spNoddy 1.9s ease-in-out infinite;
+}
+@keyframes spNoddy {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-7px) scaleY(0.99); }
+}
+.s-bob {
+  animation: spBob 2.8s ease-in-out infinite;
+}
+@keyframes spBob {
+  0%, 100% { transform: translateY(0) rotate(0); }
+  25% { transform: translateY(-6px) rotate(2deg); }
+  75% { transform: translateY(-6px) rotate(-2deg); }
+}
+.s-sway {
+  animation: spSway 5s ease-in-out infinite;
+}
+@keyframes spSway {
+  0%, 100% { transform: rotate(-2.5deg) translateY(1px); }
+  50% { transform: rotate(2.5deg) translateY(1px); }
+}
+.s-shiver {
+  animation: spShiver 0.34s ease-in-out infinite;
+}
+@keyframes spShiver {
+  0%, 100% { transform: translateX(-1px); }
+  50% { transform: translateX(1px); }
+}
+.s-snooze {
+  animation: spSnooze 4.4s ease-in-out infinite;
+  transform-origin: 55% 89%;
+}
+@keyframes spSnooze {
+  0%, 100% { transform: rotate(3deg) translateY(0) scaleY(1); }
+  50% { transform: rotate(4deg) translateY(4px) scaleY(0.985); }
+}
+.s-hop {
+  animation: spHop 2.1s ease-out infinite;
+}
+@keyframes spHop {
+  0% { transform: translateY(0) scaleX(1) scaleY(1); }
+  10% { transform: translateY(3px) scaleX(1.07) scaleY(0.94); }
+  34% { transform: translateY(-16px) scaleX(0.94) scaleY(1.08); }
+  56% { transform: translateY(0) scaleX(1.09) scaleY(0.91); }
+  74% { transform: translateY(-5px) scaleX(1) scaleY(1.02); }
+  100% { transform: translateY(0) scaleX(1) scaleY(1); }
+}
+.s-floaty {
+  animation: spFloaty 4s ease-in-out infinite;
+}
+@keyframes spFloaty {
+  0%, 100% { transform: translateY(0) rotate(-1.2deg); }
+  50% { transform: translateY(-6px) rotate(1.2deg); }
+}
+
+/* ── secondary motion (sprout / arms / eyes) ────────────────────────────── */
+.sp-sway {
+  animation: spSproutSway 3.6s ease-in-out infinite;
+}
+@keyframes spSproutSway {
+  0%, 100% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
+}
+.arm-wiggle {
+  animation: spArm 2.8s ease-in-out infinite;
+}
+.arm-wiggle.rev {
+  animation-direction: reverse;
+}
+@keyframes spArm {
+  0%, 100% { transform: rotate(-2.5deg); }
+  50% { transform: rotate(2.5deg); }
+}
+.sprout-eyes.blink {
+  animation: spBlink 4.6s infinite;
+}
+@keyframes spBlink {
+  0%, 90%, 100% { transform: scaleY(1); }
+  94.5% { transform: scaleY(0.1); }
+}
+.sprout-eyes.hpulse {
+  animation: spHpulse 1.3s ease-in-out infinite;
+}
+@keyframes spHpulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.14); }
+}
+
+/* ── floating accessory loops ───────────────────────────────────────────── */
+.acc-spark {
+  transform-box: fill-box;
+  transform-origin: center;
+  opacity: 0;
+  animation: spSpark 2.2s ease-in-out infinite;
+}
+.acc-spark.d2 {
+  animation-delay: 1.1s;
+}
+@keyframes spSpark {
+  0% { opacity: 0; transform: scale(0.2) rotate(-25deg); }
+  35% { opacity: 1; transform: scale(1) rotate(0); }
+  65% { opacity: 0.9; transform: scale(0.85) rotate(8deg); }
+  100% { opacity: 0; transform: scale(0.2) rotate(25deg); }
+}
+.acc-wave {
+  transform-box: fill-box;
+  transform-origin: center;
+  opacity: 0.18;
+  animation: spWave 2.4s ease-in-out infinite;
+}
+.acc-wave.d1 { animation-delay: 0.5s; }
+.acc-wave.d2 { animation-delay: 1s; }
+@keyframes spWave {
+  0%, 100% { opacity: 0.18; transform: translateX(0); }
+  50% { opacity: 0.62; transform: translateX(2.5px); }
+}
+.acc-z1 {
+  transform-box: fill-box;
+  transform-origin: center;
+  opacity: 0;
+  animation: spZ1 2.8s ease-out infinite;
+}
+.acc-z2 {
+  transform-box: fill-box;
+  transform-origin: center;
+  opacity: 0;
+  animation: spZ2 2.8s ease-out 1.1s infinite;
+}
+@keyframes spZ1 {
+  0% { opacity: 0; transform: translateY(0) scale(0.7); }
+  35% { opacity: 0.85; transform: translateY(-12px) scale(1); }
+  100% { opacity: 0; transform: translateY(-22px) scale(0.9); }
+}
+@keyframes spZ2 {
+  0% { opacity: 0; transform: translateY(0) scale(0.7); }
+  35% { opacity: 0.9; transform: translateY(-16px) scale(1); }
+  100% { opacity: 0; transform: translateY(-30px) scale(0.95); }
+}
+.acc-heart {
+  transform-box: fill-box;
+  transform-origin: center;
+  opacity: 0;
+  animation: spHeart 2.6s ease-out infinite;
+}
+.acc-heart.d2 {
+  animation-delay: 1.2s;
+}
+@keyframes spHeart {
+  0% { opacity: 0; transform: translateY(6px) scale(0.7); }
+  35% { opacity: 0.95; transform: translateY(-18px) scale(1); }
+  100% { opacity: 0; transform: translateY(-44px) scale(0.9); }
+}
+.acc-confetti {
+  transform-box: fill-box;
+  transform-origin: center;
+  opacity: 0;
+  animation: spConfetti 2.2s ease-in infinite;
+}
+.acc-confetti.d1 { animation-delay: 0.4s; }
+.acc-confetti.d2 { animation-delay: 0.8s; }
+@keyframes spConfetti {
+  0% { opacity: 0; transform: translateY(-6px); }
+  15% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(32px) rotate(160deg); }
+}
+.acc-tear {
+  transform-box: fill-box;
+  transform-origin: top;
+  opacity: 0;
+  animation: spTear 3.2s ease-in infinite;
+}
+@keyframes spTear {
+  0%, 55% { opacity: 0; transform: translateY(0) scaleY(0.5); }
+  70% { opacity: 0.9; transform: translateY(0) scaleY(1); }
+  100% { opacity: 0; transform: translateY(22px) scaleY(1.2); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sprout-body,
+  .sp-sway,
+  .arm-wiggle,
+  .sprout-eyes,
+  [class*="acc-"] {
+    animation: none !important;
+  }
+  [class*="acc-"] {
+    opacity: 0.85 !important;
+  }
+}

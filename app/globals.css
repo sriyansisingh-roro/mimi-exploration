@@ -21,14 +21,3 @@ body {
   background: var(--color-bg);
   color: var(--color-ink);
 }
-
-/* Smoothly cross-fade Mimi's body color when state changes. */
-.mimi-body {
-  transition: fill 600ms ease;
-}
-
-/* Pivot helpers so SVG groups scale/rotate around their own center. */
-.mimi-pivot {
-  transform-box: fill-box;
-  transform-origin: center;
-}
