@@ -1,0 +1,34 @@
+@import "tailwindcss";
+
+/* ──────────────────────────────────────────────────────────────
+   Mimi theme tokens (from the final brand palette).
+   Exposed as CSS variables so <Mimi /> can reference them
+   directly (var(--color-primary), etc.) without hardcoding hex.
+   ────────────────────────────────────────────────────────────── */
+@theme {
+  --color-primary: #6c73ff; /* lavender-blue — calm base */
+  --color-accent: #ff9a8b; /* soft coral — tiny warm moments */
+  --color-muted: #a7abbe; /* quiet grey-lavender — resting */
+  --color-ink: #252a44; /* deep ink — eyes / mouth */
+
+  --color-bg: #fbfaff;
+  --color-bg-warm: #fff8f1;
+  --color-bg-cool: #f2f4ff;
+}
+
+html,
+body {
+  background: var(--color-bg);
+  color: var(--color-ink);
+}
+
+/* Smoothly cross-fade Mimi's body color when state changes. */
+.mimi-body {
+  transition: fill 600ms ease;
+}
+
+/* Pivot helpers so SVG groups scale/rotate around their own center. */
+.mimi-pivot {
+  transform-box: fill-box;
+  transform-origin: center;
+}
