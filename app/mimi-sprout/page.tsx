@@ -215,51 +215,6 @@ function ScaleStrip() {
   );
 }
 
-function Anatomy() {
-  const swatches: [string, string][] = [
-    ["Body", "radial-gradient(circle at 35% 28%,#E2DDFB,#A89AE6)"],
-    ["Form shade", "#5E4E97"],
-    ["Sprout", "linear-gradient(180deg,#A9E6A0,#69BD6E)"],
-    ["Eyes / ink", "#3A3357"],
-    ["Cheeks", "#F3A8C4"],
-    ["Brand", "#6C73FF"],
-  ];
-  const notes: [string, string][] = [
-    ["Ported, not redrawn", "Same body path, sprout, arm and eye geometry as the sprout branch — rebuilt in plain SVG + CSS so it runs anywhere with no framework."],
-    ["Six → ten moods", "Added happy, empathetic, worried and caring to the original idle / listening / thinking / celebrating / resting / concerned set."],
-    ["Poses, not just faces", "Arms pivot from the shoulders and the sprout from its base, so every mood is a grounded full-body gesture with secondary motion."],
-    ["Calm by default", "Idle breathing and blinking, with one small gesture per mood — gentle, never a distracting loop, and reduced-motion safe."],
-  ];
-  return (
-    <div>
-      <SectionLabel n="04">How she’s built</SectionLabel>
-      <div style={{ display: "grid", gridTemplateColumns: "300px 1fr", gap: 40, alignItems: "start", marginTop: 14 }}>
-        <div style={{ background: "#fff", border: `1px solid ${SP.line}`, borderRadius: 22, padding: 24 }}>
-          <div style={{ display: "grid", placeItems: "center", marginBottom: 18 }}>
-            <MimiSprout mood="calm" view="front" size={180} showAcc={false} />
-          </div>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
-            {swatches.map(([name, c]) => (
-              <div key={name} style={{ display: "flex", alignItems: "center", gap: 9 }}>
-                <span style={{ width: 22, height: 22, borderRadius: 7, background: c, border: "1px solid rgba(0,0,0,.08)", flexShrink: 0 }} />
-                <span style={{ fontSize: 12.5, color: SP.soft, fontWeight: 500 }}>{name}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
-          {notes.map(([t, b]) => (
-            <div key={t} style={{ background: "#fff", border: `1px solid ${SP.line}`, borderRadius: 18, padding: "20px 22px" }}>
-              <div style={{ fontFamily: SANS, fontWeight: 700, fontSize: 15, color: SP.ink, marginBottom: 6 }}>{t}</div>
-              <div style={{ fontSize: 13, lineHeight: 1.55, color: SP.soft }}>{b}</div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
-
 export default function MimiSproutPage() {
   return (
     <div
@@ -274,17 +229,6 @@ export default function MimiSproutPage() {
         <Poses />
         <div style={{ height: 72 }} />
         <ScaleStrip />
-        <div style={{ height: 72 }} />
-        <Anatomy />
-        <div style={{ marginTop: 64, paddingTop: 24, borderTop: `1px solid ${SP.line}`, display: "flex", alignItems: "center", gap: 10, color: SP.soft, fontSize: 13 }}>
-          <MimiSprout mood="loving" view="front" size={34} idle={false} showAcc={false} />
-          <span>
-            Mimi (Sprout) — companion character for{" "}
-            <b style={{ color: SP.primary }}>
-              wewa<span style={{ color: SP.leaf }}>.</span>life
-            </b>
-          </span>
-        </div>
       </div>
     </div>
   );

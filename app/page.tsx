@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Instrument_Serif, Manrope, Space_Grotesk } from "next/font/google";
+import { Instrument_Serif, Manrope } from "next/font/google";
 import Mimi from "@/components/mimi/Mimi";
 import MimiSprout from "@/components/mimi/sprout/MimiSprout";
 import MimiPenguin from "@/components/mimi/penguin/MimiPenguin";
@@ -15,14 +15,8 @@ const manrope = Manrope({
   subsets: ["latin"],
   variable: "--font-manrope",
 });
-const grotesk = Space_Grotesk({
-  subsets: ["latin"],
-  variable: "--font-grotesk",
-});
-
 const C = {
   primary: "#6C73FF",
-  accent: "#FF9A8B",
   ink: "#252A44",
   soft: "#7C7F95",
   bg: "#FBFAFF",
@@ -34,44 +28,52 @@ const C = {
 
 type CharCard = {
   key: string;
-  tag: string;
   title: string;
-  blurb: string;
   href: string;
   preview: React.ReactNode;
-  dotColor: string;
 };
 
 const CARDS: CharCard[] = [
   {
     key: "original",
-    tag: "V1 · 6 STATES",
     title: "Original",
-    blurb:
-      "The first plush sprout — six grounded states with Framer Motion. Where Mimi began.",
     href: "/mimi-preview",
-    dotColor: C.primary,
     preview: <Mimi state="idle" size={150} />,
   },
   {
     key: "sprout",
-    tag: "SPROUT · 10 MOODS",
     title: "Sprout",
-    blurb:
-      "The seed-body refined to ten expressions and full-body poses, rebuilt in plain SVG + CSS.",
     href: "/mimi-sprout",
-    dotColor: C.leaf,
     preview: <MimiSprout mood="happy" view="front" size={150} />,
   },
   {
     key: "penguin",
-    tag: "PENGUIN · 10 MOODS",
     title: "Penguin",
-    blurb:
-      "A soft clay penguin chick — lavender hood, tiny beak, ten moods of warm companionship.",
     href: "/mimi-penguin",
-    dotColor: C.accent,
     preview: <MimiPenguin mood="happy" size={150} />,
+  },
+  {
+    key: "new-character",
+    title: "Pocket Cloud",
+    href: "/mimi-new-character",
+    preview: (
+      <img
+        src="/mimi-concepts/pocket-cloud.png"
+        alt=""
+        loading="eager"
+        decoding="async"
+        style={{
+          width: 230,
+          maxWidth: "78%",
+          aspectRatio: "3 / 2",
+          objectFit: "cover",
+          objectPosition: "left top",
+          borderRadius: 22,
+          border: `1px solid ${C.line}`,
+          boxShadow: "0 22px 48px -34px rgba(37,42,68,.55)",
+        }}
+      />
+    ),
   },
 ];
 
@@ -104,36 +106,10 @@ function Card({ card }: { card: CharCard }) {
       >
         {card.preview}
       </div>
-      <div style={{ padding: "22px 24px 26px" }}>
-        <div
-          style={{
-            display: "inline-flex",
-            alignItems: "center",
-            gap: 7,
-            padding: "5px 11px",
-            borderRadius: 999,
-            background: C.cool,
-            border: `1px solid ${C.line}`,
-            fontFamily: "var(--font-grotesk)",
-            fontSize: 11,
-            fontWeight: 600,
-            letterSpacing: "0.08em",
-            color: C.soft,
-          }}
-        >
-          <span
-            style={{
-              width: 7,
-              height: 7,
-              borderRadius: 99,
-              background: card.dotColor,
-            }}
-          />
-          {card.tag}
-        </div>
+      <div style={{ padding: "22px 24px 24px" }}>
         <h2
           style={{
-            margin: "14px 0 0",
+            margin: 0,
             fontFamily: "var(--font-instrument)",
             fontWeight: 400,
             fontSize: 30,
@@ -143,29 +119,6 @@ function Card({ card }: { card: CharCard }) {
         >
           {card.title}
         </h2>
-        <p
-          style={{
-            margin: "8px 0 16px",
-            fontSize: 14,
-            lineHeight: 1.55,
-            color: C.soft,
-          }}
-        >
-          {card.blurb}
-        </p>
-        <span
-          style={{
-            display: "inline-flex",
-            alignItems: "center",
-            gap: 6,
-            fontFamily: "var(--font-manrope)",
-            fontSize: 14,
-            fontWeight: 700,
-            color: C.primary,
-          }}
-        >
-          View character →
-        </span>
       </div>
     </Link>
   );
@@ -174,7 +127,7 @@ function Card({ card }: { card: CharCard }) {
 export default function Home() {
   return (
     <div
-      className={`${instrument.variable} ${manrope.variable} ${grotesk.variable}`}
+      className={`${instrument.variable} ${manrope.variable}`}
       style={{
         fontFamily: "var(--font-manrope)",
         minHeight: "100vh",
@@ -182,36 +135,10 @@ export default function Home() {
       }}
     >
       <div style={{ maxWidth: 1180, margin: "0 auto", padding: "72px 40px 90px" }}>
-        <header style={{ textAlign: "center", marginBottom: 56 }}>
-          <div
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: 8,
-              padding: "6px 14px",
-              borderRadius: 999,
-              background: C.cool,
-              border: `1px solid ${C.line}`,
-              fontFamily: "var(--font-grotesk)",
-              fontSize: 12,
-              fontWeight: 700,
-              letterSpacing: "0.08em",
-              color: C.primary,
-            }}
-          >
-            <span
-              style={{
-                width: 7,
-                height: 7,
-                borderRadius: 99,
-                background: C.leaf,
-              }}
-            />
-            MIMI · CHARACTER EXPLORATIONS
-          </div>
+        <header style={{ textAlign: "center", marginBottom: 48 }}>
           <h1
             style={{
-              margin: "22px 0 0",
+              margin: 0,
               fontFamily: "var(--font-instrument)",
               fontWeight: 400,
               fontSize: 58,
@@ -220,26 +147,14 @@ export default function Home() {
               color: C.ink,
             }}
           >
-            Three ways to meet Mimi.
+            Four ways to meet Mimi.
           </h1>
-          <p
-            style={{
-              margin: "18px auto 0",
-              maxWidth: 560,
-              fontSize: 16,
-              lineHeight: 1.6,
-              color: C.soft,
-            }}
-          >
-            A calm, patient companion for wewa.life. Each direction is a full
-            character study — pick one to see all its moods.
-          </p>
         </header>
 
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(3, 1fr)",
+            gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 250px), 1fr))",
             gap: 24,
           }}
         >
@@ -248,26 +163,6 @@ export default function Home() {
           ))}
         </div>
 
-        <div
-          style={{
-            marginTop: 64,
-            paddingTop: 24,
-            borderTop: `1px solid ${C.line}`,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: 10,
-            color: C.soft,
-            fontSize: 13,
-          }}
-        >
-          <span>
-            Mimi — companion character for{" "}
-            <b style={{ color: C.primary }}>
-              wewa<span style={{ color: C.leaf }}>.</span>life
-            </b>
-          </span>
-        </div>
       </div>
     </div>
   );

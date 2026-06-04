@@ -221,52 +221,6 @@ function ExpressionSheet() {
   );
 }
 
-// ---- Anatomy / system notes ----
-function Anatomy() {
-  const swatches: [string, string][] = [
-    ["Hood", "linear-gradient(160deg,#CFC6F2,#8A78D2)"],
-    ["Face", "#FFFFFF"],
-    ["Eyes", "#2E2838"],
-    ["Beak", "linear-gradient(180deg,#FBB24A,#F2922A)"],
-    ["Blush", "#F4A6C4"],
-    ["Shadow", "#7E6BC9"],
-  ];
-  const notes: [string, string][] = [
-    ["Constant identity", "The lavender hood, white face, cowlick and proportions never change — only the eyes, brows, beak and motion do. That keeps Mimi instantly recognisable at any size."],
-    ["Soft & dimensional", "Layered gradients, a top highlight and a grounding drop shadow give Mimi a soft, clay-like depth rather than a flat sticker look."],
-    ["Motion is subtle", "Idle breathing and blinking by default; each mood adds one small gesture — a bounce, a droop, a slow snooze — never a distracting loop."],
-    ["Reads small", "Designed to work from a 34px avatar in a nav bar up to a 300px hero, with no fine detail that breaks at small sizes."],
-  ];
-  return (
-    <div>
-      <SectionLabel n="02">How she’s built</SectionLabel>
-      <div style={{ display: "grid", gridTemplateColumns: "300px 1fr", gap: 40, alignItems: "start", marginTop: 14 }}>
-        <div style={{ background: "#fff", border: `1px solid ${LINE}`, borderRadius: 22, padding: 24 }}>
-          <div style={{ display: "grid", placeItems: "center", marginBottom: 18 }}>
-            <MimiPenguin mood="calm" size={180} />
-          </div>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
-            {swatches.map(([name, c]) => (
-              <div key={name} style={{ display: "flex", alignItems: "center", gap: 9 }}>
-                <span style={{ width: 22, height: 22, borderRadius: 7, background: c, border: `1px solid rgba(0,0,0,.08)`, flexShrink: 0 }} />
-                <span style={{ fontSize: 12.5, color: INK_SOFT, fontWeight: 500 }}>{name}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
-          {notes.map(([t, b]) => (
-            <div key={t} style={{ background: "#fff", border: `1px solid ${LINE}`, borderRadius: 18, padding: "20px 22px" }}>
-              <div style={{ fontFamily: FF_MANROPE, fontWeight: 700, fontSize: 15, color: INK, marginBottom: 6 }}>{t}</div>
-              <div style={{ fontSize: 13, lineHeight: 1.55, color: INK_SOFT }}>{b}</div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
-
 // ---- Scale strip ----
 function ScaleStrip() {
   return (
@@ -303,58 +257,11 @@ export default function MimiPenguinPage() {
       style={{ background: CREAM, color: INK, fontFamily: FF_MANROPE, minHeight: "100vh" }}
     >
       <div style={{ maxWidth: 1180, margin: "0 auto", padding: "56px 40px 90px" }}>
-        {/* identity pill (top-right) */}
-        <div
-          style={{
-            position: "fixed",
-            top: 20,
-            right: 22,
-            zIndex: 50,
-            display: "inline-flex",
-            alignItems: "center",
-            gap: 8,
-            padding: "9px 15px",
-            borderRadius: 999,
-            background: "#fff",
-            border: `1px solid ${LINE}`,
-            boxShadow: "0 8px 24px -14px rgba(46,40,56,.4)",
-            color: INK,
-            fontSize: 13,
-            fontWeight: 600,
-          }}
-        >
-          <MimiPenguin mood="happy" size={22} idle={false} />
-          Penguin · primary
-        </div>
-
         <Playground />
         <div style={{ height: 80 }} />
         <ExpressionSheet />
         <div style={{ height: 72 }} />
         <ScaleStrip />
-        <div style={{ height: 72 }} />
-        <Anatomy />
-
-        <div
-          style={{
-            marginTop: 64,
-            paddingTop: 24,
-            borderTop: `1px solid ${LINE}`,
-            display: "flex",
-            alignItems: "center",
-            gap: 10,
-            color: INK_SOFT,
-            fontSize: 13,
-          }}
-        >
-          <MimiPenguin mood="loving" size={34} idle={false} />
-          <span>
-            Mimi — companion character for{" "}
-            <b style={{ color: PURPLE }}>
-              wewa<span style={{ color: TEAL }}>.</span>life
-            </b>
-          </span>
-        </div>
       </div>
     </div>
   );

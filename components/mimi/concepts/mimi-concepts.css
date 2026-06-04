@@ -1,0 +1,139 @@
+.mc-crop-stage {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+}
+
+.mc-character-motion {
+  position: absolute;
+  inset: 0;
+  transform-origin: 50% 82%;
+  will-change: transform;
+}
+
+.mc-crop-position {
+  position: absolute;
+  inset: 0;
+  will-change: transform;
+}
+
+.mc-crop-frame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 34%;
+  background: transparent;
+}
+
+.mc-crop-sheet {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 300%;
+  height: 200%;
+  max-width: none;
+  object-fit: fill;
+  user-select: none;
+  pointer-events: none;
+}
+
+.mc-motion-breathe {
+  animation: mcSubtleBreathe 4.8s ease-in-out infinite;
+}
+
+@keyframes mcSubtleBreathe {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-2.4px) scale(1.005, 0.997);
+  }
+}
+
+.mc-motion-listen {
+  animation: mcSubtleListen 4.2s ease-in-out infinite;
+}
+
+@keyframes mcSubtleListen {
+  0%,
+  100% {
+    transform: rotate(-0.8deg) translateY(0);
+  }
+  50% {
+    transform: rotate(0.8deg) translateY(-2.2px);
+  }
+}
+
+.mc-motion-think {
+  animation: mcSubtleThink 3.6s ease-in-out infinite;
+}
+
+@keyframes mcSubtleThink {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  35% {
+    transform: translateY(-3px) rotate(0.6deg);
+  }
+  72% {
+    transform: translateY(-2px) rotate(-0.5deg);
+  }
+}
+
+.mc-motion-celebrate {
+  animation: mcSubtleCelebrate 2.8s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+}
+
+@keyframes mcSubtleCelebrate {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  18% {
+    transform: translateY(1.4px) scale(1.005, 0.996);
+  }
+  42% {
+    transform: translateY(-5.4px) scale(0.996, 1.006);
+  }
+  68% {
+    transform: translateY(0) scale(1.005, 0.996);
+  }
+}
+
+.mc-motion-rest {
+  animation: mcSubtleRest 5.8s ease-in-out infinite;
+}
+
+@keyframes mcSubtleRest {
+  0%,
+  100% {
+    transform: translateY(1.4px) scale(1.003, 0.998);
+  }
+  50% {
+    transform: translateY(3.6px) scale(1.006, 0.995);
+  }
+}
+
+.mc-motion-concern {
+  animation: mcSubtleConcern 5s ease-in-out infinite;
+}
+
+@keyframes mcSubtleConcern {
+  0%,
+  100% {
+    transform: translateX(0) translateY(0) scale(1);
+  }
+  50% {
+    transform: translateX(1.2px) translateY(1.6px) scale(0.998, 1.002);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mc-character-motion {
+    animation: none !important;
+  }
+}
