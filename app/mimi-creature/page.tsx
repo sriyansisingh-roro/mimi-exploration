@@ -69,6 +69,22 @@ export default function MimiCreaturePage() {
           ))}
         </div>
 
+        <div style={{ marginTop: 30, display: "flex", alignItems: "baseline", gap: 12 }}>
+          <span style={{ fontFamily: "var(--font-grotesk)", fontSize: 13, fontWeight: 600, color: C.green, letterSpacing: "0.12em" }}>02</span>
+          <h2 style={{ margin: 0, fontFamily: "var(--font-instrument)", fontWeight: 400, fontSize: 30 }}>Avatar — face only</h2>
+          <span style={{ fontSize: 13, color: C.soft }}>circular outer shape, no arms or feet</span>
+        </div>
+        <div style={{ marginTop: 18, display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 16 }}>
+          {STATE_ORDER.map((s) => (
+            <div key={s} style={{ background: "#fff", border: `1px solid ${C.line}`, borderRadius: 20, padding: "16px 14px 18px", textAlign: "center" }}>
+              <div style={{ display: "grid", placeItems: "center", padding: "6px 0" }}>
+                <MimiCreature state={s} size={112} avatar />
+              </div>
+              <div style={{ marginTop: 10, fontFamily: "var(--font-manrope)", fontWeight: 700, fontSize: 14 }}>{STATES[s].label}</div>
+            </div>
+          ))}
+        </div>
+
         <div style={{ marginTop: 36, paddingTop: 20, borderTop: `1px solid ${C.line}`, color: C.soft, fontSize: 13.5 }}>
           Review variant — not added anywhere yet. Tell me if this is the direction and I’ll wire it in / push to Figma.
         </div>

@@ -1,100 +1,81 @@
 /* ──────────────────────────────────────────────────────────────────────────
    Glow Mimi — motion.
-   Everything is deliberately slow and soft: Mimi breathes like a calm
-   companion sitting beside you, never like a game mascot. Each state adds one
-   gentle gesture and a glow behaviour. All loops collapse under
-   prefers-reduced-motion.
+   Slow and soft, but each state has a clearly distinct gesture so the feeling
+   reads. Everything collapses under prefers-reduced-motion.
    ────────────────────────────────────────────────────────────────────────── */
 
-.mg-body { transform-box: view-box; transform-origin: 108px 168px; }
+.mg-body { transform-box: view-box; transform-origin: 100px 168px; }
 
-/* base calm breath */
-.mg-breathe { animation: mgBreathe 6.5s ease-in-out infinite; }
-@keyframes mgBreathe {
-  0%, 100% { transform: translateY(0) scale(1, 1); }
-  50% { transform: translateY(-1.6px) scale(1.012, 0.992); }
-}
-/* listening — a slow attentive lean */
-.mg-lean { animation: mgLean 6s ease-in-out infinite; }
-@keyframes mgLean {
-  0%, 100% { transform: rotate(-1deg) translateY(0); }
-  50% { transform: rotate(0.6deg) translateY(-1.4px); }
-}
-/* thinking — gentle bob */
-.mg-bob { animation: mgBob 4.6s ease-in-out infinite; }
-@keyframes mgBob {
-  0%, 100% { transform: translateY(0); }
-  45% { transform: translateY(-2.4px); }
-}
-/* concerned / waiting — very slow side sway */
-.mg-sway { animation: mgSway 7s ease-in-out infinite; }
-@keyframes mgSway {
-  0%, 100% { transform: translateX(0) rotate(0deg); }
-  50% { transform: translateX(1.4px) rotate(0.5deg); }
-}
-/* celebrating — one soft, well-damped rise (never a bounce) */
-.mg-hop { animation: mgHop 3.8s ease-in-out infinite; }
-@keyframes mgHop {
-  0%, 100% { transform: translateY(0) scale(1, 1); }
-  42% { transform: translateY(-5px) scale(0.99, 1.01); }
-  70% { transform: translateY(0) scale(1.01, 0.99); }
-}
-/* resting — sinking, slower breath */
-.mg-snooze { animation: mgSnooze 7.5s ease-in-out infinite; }
-@keyframes mgSnooze {
-  0%, 100% { transform: translateY(1px) scale(1.004, 0.996); }
-  50% { transform: translateY(3px) scale(1.008, 0.992); }
-}
-/* encouraging — a soft forward nudge */
-.mg-nudge { animation: mgNudge 4.4s ease-in-out infinite; }
-@keyframes mgNudge {
-  0%, 100% { transform: translateY(0) scale(1); }
-  40% { transform: translateY(-2px) scale(1.012); }
-}
-/* error reassurance — gentle, settling tilt */
-.mg-tilt { animation: mgTilt 6.5s ease-in-out infinite; }
-@keyframes mgTilt {
-  0%, 100% { transform: rotate(0.8deg); }
-  50% { transform: rotate(-0.8deg); }
-}
+/* idle — calm, even breath */
+.mg-breathe { animation: mgBreathe 5s ease-in-out infinite; }
+@keyframes mgBreathe { 0%, 100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-2.4px) scale(1.022, 0.99); } }
 
-/* ── glow behaviours (applied to the warm halo + light orb) ─────────────── */
+/* listening — leans in and settles (attentive) */
+.mg-lean { animation: mgLean 4.4s ease-in-out infinite; }
+@keyframes mgLean { 0%, 100% { transform: rotate(0deg) translate(0, 0); } 45% { transform: rotate(-3deg) translate(-2px, -1.5px); } }
+
+/* thinking — a slow ponder bob, with a held beat at the top */
+.mg-bob { animation: mgBob 3.8s ease-in-out infinite; }
+@keyframes mgBob { 0%, 100% { transform: translateY(0); } 40% { transform: translateY(-3.4px); } 60% { transform: translateY(-3.4px); } }
+
+/* concerned — a small, slow empathetic sway-and-settle */
+.mg-sway { animation: mgSway 5.4s ease-in-out infinite; }
+@keyframes mgSway { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(1.4px) rotate(1.2deg); } }
+
+/* celebrating — one clear cheerful hop (soft squash, never harsh) */
+.mg-hop { animation: mgHop 2.6s ease-in-out infinite; }
+@keyframes mgHop { 0%, 100% { transform: translateY(0) scale(1); } 38% { transform: translateY(-7px) scale(0.98, 1.02); } 62% { transform: translateY(0) scale(1.03, 0.97); } 80% { transform: translateY(-2px); } }
+
+/* resting — sinks and breathes slowly */
+.mg-snooze { animation: mgSnooze 6.5s ease-in-out infinite; }
+@keyframes mgSnooze { 0%, 100% { transform: translateY(0) scale(1); } 50% { transform: translateY(3.4px) scale(1.02, 0.98); } }
+
+/* encouraging — a gentle forward "you've got this" nudge */
+.mg-nudge { animation: mgNudge 3.2s ease-in-out infinite; }
+@keyframes mgNudge { 0%, 100% { transform: translateY(0) scale(1); } 34% { transform: translateY(-3.6px) scale(1.02); } 60% { transform: translateY(0); } }
+
+/* waiting — a very slow, patient side-to-side */
+.mg-wait { animation: mgWait 7s ease-in-out infinite; }
+@keyframes mgWait { 0%, 100% { transform: translateX(-2.4px) rotate(-1.3deg); } 50% { transform: translateX(2.4px) rotate(1.3deg); } }
+
+/* reassurance — a soft reassuring tilt */
+.mg-tilt { animation: mgTilt 5.2s ease-in-out infinite; }
+@keyframes mgTilt { 0%, 100% { transform: rotate(1.4deg); } 50% { transform: rotate(-1.4deg); } }
+
+/* ── glow behaviours — brightness carries the emotion ──────────────────── */
 .mg-glow { transform-box: view-box; }
-.glow-steady { animation: glSteady 5.5s ease-in-out infinite; }
-@keyframes glSteady { 0%,100% { opacity: 0.82; } 50% { opacity: 1; } }
-.glow-soft { animation: glSoft 7s ease-in-out infinite; opacity: 0.7; }
-@keyframes glSoft { 0%,100% { opacity: 0.45; } 50% { opacity: 0.78; } }
-.glow-bright { animation: glBright 3.4s ease-in-out infinite; }
-@keyframes glBright { 0%,100% { opacity: 0.92; transform: scale(1); } 50% { opacity: 1; transform: scale(1.05); } }
-.glow-warm { animation: glWarm 4.2s ease-in-out infinite; }
-@keyframes glWarm { 0%,100% { opacity: 0.85; } 50% { opacity: 1; } }
-.glow-dim { opacity: 0.5; animation: glDim 7s ease-in-out infinite; }
-@keyframes glDim { 0%,100% { opacity: 0.36; } 50% { opacity: 0.6; } }
-/* pulse — the "processing / replying" heartbeat, soft and round */
-.glow-pulse { animation: glPulse 2.4s ease-in-out infinite; }
-@keyframes glPulse {
-  0%, 100% { opacity: 0.5; transform: scale(0.94); }
-  50% { opacity: 1; transform: scale(1.06); }
-}
+.glow-steady { animation: glSteady 5s ease-in-out infinite; }
+@keyframes glSteady { 0%, 100% { opacity: 0.78; } 50% { opacity: 1; } }
+.glow-soft { animation: glSoft 6s ease-in-out infinite; }
+@keyframes glSoft { 0%, 100% { opacity: 0.4; } 50% { opacity: 0.76; } }
+.glow-bright { animation: glBright 2.8s ease-in-out infinite; }
+@keyframes glBright { 0%, 100% { opacity: 0.85; transform: scale(1); } 50% { opacity: 1; transform: scale(1.08); } }
+.glow-warm { animation: glWarm 3.6s ease-in-out infinite; }
+@keyframes glWarm { 0%, 100% { opacity: 0.78; } 50% { opacity: 1; } }
+.glow-dim { animation: glDim 6s ease-in-out infinite; }
+@keyframes glDim { 0%, 100% { opacity: 0.3; } 50% { opacity: 0.56; } }
+.glow-pulse { animation: glPulse 1.9s ease-in-out infinite; }
+@keyframes glPulse { 0%, 100% { opacity: 0.45; transform: scale(0.92); } 50% { opacity: 1; transform: scale(1.09); } }
 
 /* ── accessories ───────────────────────────────────────────────────────── */
-.mg-ripple { animation: mgRipple 3.4s ease-out infinite; transform-box: view-box; }
-.mg-ripple.d1 { animation-delay: 0.7s; }
-@keyframes mgRipple { 0% { opacity: 0.5; transform: translateX(0); } 60% { opacity: 0.2; } 100% { opacity: 0; transform: translateX(-4px); } }
+.mg-ripple { animation: mgRipple 3s ease-out infinite; transform-box: view-box; }
+.mg-ripple.d1 { animation-delay: 0.6s; }
+@keyframes mgRipple { 0% { opacity: 0.55; transform: translateX(0); } 60% { opacity: 0.2; } 100% { opacity: 0; transform: translateX(-5px); } }
 
-.mg-think { animation: mgThink 3s ease-in-out infinite; transform-box: view-box; }
-.mg-think.d1 { animation-delay: 0.5s; }
-.mg-think.d2 { animation-delay: 1s; }
-@keyframes mgThink { 0%,100% { opacity: 0.2; transform: translateY(0); } 50% { opacity: 0.9; transform: translateY(-2px); } }
+.mg-think { animation: mgThink 2.8s ease-in-out infinite; transform-box: view-box; }
+.mg-think.d1 { animation-delay: 0.45s; }
+.mg-think.d2 { animation-delay: 0.9s; }
+@keyframes mgThink { 0%, 100% { opacity: 0.15; transform: translateY(0); } 50% { opacity: 0.9; transform: translateY(-2.5px); } }
 
-.mg-spark { animation: mgSpark 3.2s ease-in-out infinite; transform-box: view-box; transform-origin: center; }
-.mg-spark.d1 { animation-delay: 0.8s; }
-@keyframes mgSpark { 0%,100% { opacity: 0.2; transform: scale(0.7); } 50% { opacity: 1; transform: scale(1); } }
+.mg-spark { animation: mgSpark 2.8s ease-in-out infinite; transform-box: view-box; transform-origin: center; }
+.mg-spark.d1 { animation-delay: 0.7s; }
+@keyframes mgSpark { 0%, 100% { opacity: 0.15; transform: scale(0.65); } 50% { opacity: 1; transform: scale(1); } }
 
-.mg-type { animation: mgType 1.5s ease-in-out infinite; transform-box: view-box; }
-.mg-type.d1 { animation-delay: 0.25s; }
-.mg-type.d2 { animation-delay: 0.5s; }
-@keyframes mgType { 0%,100% { opacity: 0.25; transform: translateY(0); } 40% { opacity: 1; transform: translateY(-2.5px); } }
+/* typing — three dots rolling, like a chat indicator */
+.mg-type { animation: mgType 1.35s ease-in-out infinite; transform-box: view-box; }
+.mg-type.d1 { animation-delay: 0.22s; }
+.mg-type.d2 { animation-delay: 0.44s; }
+@keyframes mgType { 0%, 100% { opacity: 0.3; transform: translateY(0); } 40% { opacity: 1; transform: translateY(-3px); } }
 
 @media (prefers-reduced-motion: reduce) {
   .mg-body, .mg-glow, [class*="mg-ripple"], [class*="mg-think"], [class*="mg-spark"], [class*="mg-type"],
