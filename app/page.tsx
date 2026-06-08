@@ -5,6 +5,7 @@ import { Instrument_Serif, Manrope } from "next/font/google";
 import Mimi from "@/components/mimi/Mimi";
 import MimiSprout from "@/components/mimi/sprout/MimiSprout";
 import MimiPenguin from "@/components/mimi/penguin/MimiPenguin";
+import MimiGlow from "@/components/mimi/glow/MimiGlow";
 
 const instrument = Instrument_Serif({
   weight: "400",
@@ -74,6 +75,12 @@ const CARDS: CharCard[] = [
         }}
       />
     ),
+  },
+  {
+    key: "glow",
+    title: "Glow",
+    href: "/mimi-glow",
+    preview: <MimiGlow state="idle" size={150} />,
   },
 ];
 
@@ -147,7 +154,7 @@ export default function Home() {
               color: C.ink,
             }}
           >
-            Four ways to meet Mimi.
+            Five ways to meet Mimi.
           </h1>
         </header>
 
