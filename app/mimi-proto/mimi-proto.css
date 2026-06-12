@@ -1,0 +1,97 @@
+/* ──────────────────────────────────────────────────────────────────────────
+   Mimi — onboarding prototype motion.
+   Subtle, professional web-app micro-animations. Each helper is small and
+   reusable; entrance motion is staggered. Everything collapses under
+   prefers-reduced-motion.
+   ────────────────────────────────────────────────────────────────────────── */
+
+/* ── entrance: gentle fade + rise (staggered via inline animation-delay) ──── */
+.rev { opacity: 0; animation: revUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+@keyframes revUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+
+.rev-fade { opacity: 0; animation: revFade 0.8s ease forwards; }
+@keyframes revFade { to { opacity: 1; } }
+
+.rev-scale { opacity: 0; animation: revScale 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+@keyframes revScale { from { opacity: 0; transform: scale(0.94); } to { opacity: 1; transform: scale(1); } }
+
+/* ── floating decorative blobs — slow ambient drift ───────────────────────── */
+.blob { will-change: transform; }
+.blob-a { animation: floatA 18s ease-in-out infinite; }
+.blob-b { animation: floatB 22s ease-in-out infinite; }
+.blob-c { animation: floatC 26s ease-in-out infinite; }
+@keyframes floatA { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(14px,-18px) scale(1.05); } }
+@keyframes floatB { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(-16px,12px) scale(1.04); } }
+@keyframes floatC { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(10px,16px) scale(1.06); } }
+
+/* ── mascot holder — a slow hover/bob (mascot has its own internal motion) ── */
+.mascot-float { animation: mascotFloat 6s ease-in-out infinite; }
+@keyframes mascotFloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
+
+/* ── cards — hover lift ───────────────────────────────────────────────────── */
+.lift { transition: transform 0.28s cubic-bezier(0.22,1,0.36,1), box-shadow 0.28s ease; }
+.lift:hover { transform: translateY(-6px); }
+
+/* ── buttons — hover raise + press ────────────────────────────────────────── */
+.btn { transition: transform 0.16s ease, box-shadow 0.22s ease, background 0.22s ease, opacity 0.2s ease; }
+.btn:hover { transform: translateY(-2px); }
+.btn:active { transform: translateY(0) scale(0.985); }
+.btn:disabled { cursor: default; transform: none; }
+
+/* a soft sheen that sweeps a primary button on hover */
+.btn-primary { position: relative; overflow: hidden; }
+.btn-primary::after {
+  content: ""; position: absolute; inset: 0; transform: translateX(-120%);
+  background: linear-gradient(105deg, transparent 30%, rgba(255,255,255,0.28) 50%, transparent 70%);
+}
+.btn-primary:hover::after { animation: sheen 0.9s ease; }
+@keyframes sheen { to { transform: translateX(120%); } }
+
+/* ── inputs — focus ring grow + label settle ──────────────────────────────── */
+.field { transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease; }
+.field:focus-within { border-color: var(--mp-primary); box-shadow: 0 0 0 4px rgba(122,46,142,0.12); }
+.field-error { border-color: #E0567A !important; box-shadow: 0 0 0 4px rgba(224,86,122,0.12) !important; animation: shake 0.4s ease; }
+@keyframes shake { 0%,100% { transform: translateX(0); } 20% { transform: translateX(-6px); } 40% { transform: translateX(6px); } 60% { transform: translateX(-4px); } 80% { transform: translateX(4px); } }
+
+/* ── OTP digits — pop when filled, caret blink on active ───────────────────── */
+.otp-pop { animation: otpPop 0.32s cubic-bezier(0.34,1.56,0.64,1); }
+@keyframes otpPop { 0% { transform: scale(0.7); } 60% { transform: scale(1.12); } 100% { transform: scale(1); } }
+.otp-active { box-shadow: 0 0 0 3px rgba(122,46,142,0.18); border-color: var(--mp-primary) !important; }
+
+/* ── progress bar — animated fill ─────────────────────────────────────────── */
+.bar-fill { transform-origin: left center; animation: barGrow 1s cubic-bezier(0.22,1,0.36,1) forwards; }
+@keyframes barGrow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+/* ── spinner ──────────────────────────────────────────────────────────────── */
+.spin { animation: spin 0.8s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── chat — message bubbles slide in, dots for typing ─────────────────────── */
+.bubble-in { opacity: 0; animation: bubbleIn 0.5s cubic-bezier(0.22,1,0.36,1) forwards; }
+@keyframes bubbleIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+.bubble-in-r { opacity: 0; animation: bubbleInR 0.5s cubic-bezier(0.22,1,0.36,1) forwards; }
+@keyframes bubbleInR { from { opacity: 0; transform: translateY(10px) translateX(8px); } to { opacity: 1; transform: translate(0,0); } }
+
+.typing-dot { animation: typingDot 1.2s ease-in-out infinite; }
+.typing-dot.d1 { animation-delay: 0.18s; }
+.typing-dot.d2 { animation-delay: 0.36s; }
+@keyframes typingDot { 0%,100% { opacity: 0.3; transform: translateY(0); } 40% { opacity: 1; transform: translateY(-3px); } }
+
+/* nav rail items */
+.rail-item { transition: background 0.18s ease, color 0.18s ease; }
+
+/* tag chip pulse dot */
+.chip-dot { animation: chipPulse 3s ease-in-out infinite; }
+@keyframes chipPulse { 0%,100% { opacity: 0.6; } 50% { opacity: 1; } }
+
+/* screen cross-fade container */
+.screen-enter { animation: screenEnter 0.5s ease; }
+@keyframes screenEnter { from { opacity: 0; } to { opacity: 1; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .rev, .rev-fade, .rev-scale, .blob-a, .blob-b, .blob-c, .mascot-float,
+  .btn-primary::after, .otp-pop, .bar-fill, .spin, .bubble-in, .bubble-in-r,
+  .typing-dot, .chip-dot, .screen-enter, .field-error {
+    animation: none !important; opacity: 1 !important; transform: none !important;
+  }
+}
