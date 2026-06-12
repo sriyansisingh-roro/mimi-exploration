@@ -163,6 +163,27 @@ export default function Home() {
           ))}
         </div>
 
+        <div style={{ display: "flex", justifyContent: "center", marginTop: 40 }}>
+          <Link
+            href="/mimi-motion"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 8,
+              padding: "14px 26px",
+              borderRadius: 999,
+              background: C.primary,
+              color: "#fff",
+              textDecoration: "none",
+              fontSize: 16,
+              fontWeight: 600,
+              boxShadow: "0 18px 40px -22px rgba(108,115,255,.8)",
+            }}
+          >
+            See Mimi in motion <span aria-hidden>→</span>
+          </Link>
+        </div>
+
       </div>
     </div>
   );
