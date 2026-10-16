@@ -2,7 +2,7 @@
 <defs><clipPath id="av"><circle cx="66" cy="66" r="64.9"/></clipPath>
 <radialGradient id="avbg" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(66 53) scale(93.456)"><stop stop-color="#FCFBFF"/><stop offset="1" stop-color="#EEE9FB"/></radialGradient></defs>
 <circle cx="66" cy="66" r="64.9" fill="url(#avbg)"/>
-<g clip-path="url(#av)"><svg x="0" y="0" width="132" height="132" viewBox="17 18 116 116">
+<g clip-path="url(#av)"><svg x="0" y="0" width="132" height="132" viewBox="21 21 108 108">
 <style>
 .body{transform-box:fill-box;transform-origin:50% 100%;animation:breathe 3.4s ease-in-out infinite}
 @keyframes breathe{0%,100%{transform:translateY(0)}50%{transform:translateY(-2.4px)}}
@@ -46,12 +46,6 @@
 <ellipse cx="68" cy="39.7" rx="15" ry="2.6" fill="#3A3460"/>
 <path d="M62 33C62.6 30.2 64.2 28.5 66.4 28" stroke="#fff" stroke-opacity=".22" stroke-width="1.2" stroke-linecap="round"/>
 </g>
-<g transform="rotate(5 97 102)">
-<rect x="88" y="90" width="18" height="23" rx="2.4" fill="#fff" stroke="#E4DEF4" stroke-width=".8"/>
-<path d="M92 96.4H102M92 100.6H98.5" stroke="#C9BDF1" stroke-width="1.1" stroke-linecap="round"/>
-<path d="M92.3 106.1l1.3 1.4 2.6-3" stroke="#6F4BBD" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-</g>
-<path d="M110.115 99.0745C113.46 98.1155 115.135 93.7229 113.856 89.2634C112.577 84.804 108.829 81.9663 105.485 82.9253C102.14 83.8844 100.465 88.277 101.744 92.7365C103.023 97.1959 106.771 100.034 110.115 99.0745Z" fill="#A78FDE"/>
 <defs>
 <radialGradient id="paint0_radial_1298_44" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(82.6 83.9999) scale(47.6 39.2)">
 <stop stop-color="#FFD79A" stop-opacity="0.85"/>

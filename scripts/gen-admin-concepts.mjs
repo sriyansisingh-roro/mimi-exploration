@@ -181,14 +181,16 @@ const concepts = {
   "r1-reading": { extras: HAT_MIN + NOTE_MIN, eyes: face(FACE_READING), vb: "17 18 116 116" },
   "r2-peering": { extras: HAT_MIN + NOTE_MIN, eyes: face(FACE_PEERING), vb: "17 18 116 116" },
   "r3-reading-tie": { extras: HAT_MIN + TIE_MIN + NOTE_MIN, eyes: face(FACE_READING), vb: "17 18 116 116" },
-  "p1-focused": { extras: HAT_PRO + NOTE_PRO, eyes: face(FACE_PRO), vb: "17 18 116 116" },
-  "p2-no-hat": { extras: NOTE_PRO, eyes: face(FACE_PRO), vb: "17 24 116 116" },
-  "p3-mark": { extras: HAT_PRO, eyes: face(FACE_PRO), vb: "17 18 116 116" },
+  // Round 4 avatars match Figma: face-only close-up (no note), head filling the circle
+  "p1-focused": { extras: HAT_PRO + NOTE_PRO, avatarExtras: HAT_PRO, eyes: face(FACE_PRO), vb: "21 21 108 108" },
+  "p2-no-hat": { extras: NOTE_PRO, avatarExtras: "", eyes: face(FACE_PRO), vb: "21 27 108 108" },
+  "p3-mark": { extras: HAT_PRO, eyes: face(FACE_PRO), vb: "21 21 108 108" },
 };
 
 for (const [name, c] of Object.entries(concepts)) {
   const state = build(c);
   fs.writeFileSync(path.join(outDir, `${name}.svg`), state);
-  fs.writeFileSync(path.join(outDir, `${name}-avatar.svg`), avatar(state, c.vb));
+  const avatarArt = c.avatarExtras === undefined ? state : build({ ...c, extras: c.avatarExtras });
+  fs.writeFileSync(path.join(outDir, `${name}-avatar.svg`), avatar(avatarArt, c.vb));
 }
 console.log("wrote", fs.readdirSync(outDir));

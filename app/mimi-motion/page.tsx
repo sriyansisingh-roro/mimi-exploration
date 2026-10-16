@@ -240,32 +240,25 @@ export default function MimiMotion() {
             </div>
 
             {r === 0 ? (
-              <div style={{ display: "grid", gap: 10, marginTop: 16 }}>
-                {[false, true].map((dark) => (
-                  <div
-                    key={String(dark)}
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: 22,
-                      flexWrap: "wrap",
-                      padding: "14px 20px",
-                      borderRadius: 16,
-                      background: dark ? C.ink : "#fff",
-                      border: `1px solid ${dark ? C.ink : C.line}`,
-                    }}
-                  >
-                    <span style={{ fontSize: 13, fontWeight: 600, color: dark ? "#C9C6E6" : C.soft, minWidth: 110 }}>
-                      Logo · {LOGO_SIZES.join(" / ")}px
-                    </span>
-                    {round.items.map((it) => (
-                      <div key={it.id} title={it.name} style={{ display: "flex", alignItems: "center", gap: 10, marginRight: 18 }}>
-                        {LOGO_SIZES.map((sz) => (
-                          <img key={sz} src={`/mimi-admin-concepts/${it.id}-avatar.svg`} alt="" width={sz} height={sz} />
-                        ))}
-                      </div>
-                    ))}
-                  </div>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 22,
+                  flexWrap: "wrap",
+                  marginTop: 16,
+                  padding: "14px 20px",
+                  borderRadius: 16,
+                  background: "#fff",
+                  border: `1px solid ${C.line}`,
+                }}
+              >
+                <span style={{ fontSize: 13, fontWeight: 600, color: C.soft, minWidth: 110 }}>
+                  Logo mark · {LOGO_SIZES.join(" / ")}px
+                </span>
+                {/* Same face-only mark as the Figma file (hat + glasses, no note) */}
+                {LOGO_SIZES.map((sz) => (
+                  <img key={sz} src="/mimi-admin-concepts/p3-mark-avatar.svg" alt="" width={sz} height={sz} />
                 ))}
               </div>
             ) : null}

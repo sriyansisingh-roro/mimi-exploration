@@ -2,7 +2,7 @@
 <defs><clipPath id="av"><circle cx="66" cy="66" r="64.9"/></clipPath>
 <radialGradient id="avbg" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(66 53) scale(93.456)"><stop stop-color="#FCFBFF"/><stop offset="1" stop-color="#EEE9FB"/></radialGradient></defs>
 <circle cx="66" cy="66" r="64.9" fill="url(#avbg)"/>
-<g clip-path="url(#av)"><svg x="0" y="0" width="132" height="132" viewBox="17 18 116 116">
+<g clip-path="url(#av)"><svg x="0" y="0" width="132" height="132" viewBox="21 21 108 108">
 <style>
 .body{transform-box:fill-box;transform-origin:50% 100%;animation:breathe 3.4s ease-in-out infinite}
 @keyframes breathe{0%,100%{transform:translateY(0)}50%{transform:translateY(-2.4px)}}
