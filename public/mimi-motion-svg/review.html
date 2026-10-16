@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mimi — Motion (animated SVG)</title>
+<style>
+  :root { color-scheme: light; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif; background:#faf9fc; color:#3a345f; margin:0; padding:32px; }
+  h1 { font-size:24px; margin:0 0 4px; }
+  p.sub { color:#8b8aa3; margin:0 0 28px; }
+  h2 { margin:34px 0 12px; border-bottom:1px solid #e7e2f2; padding-bottom:8px; font-size:18px; }
+  .grid { display:flex; flex-wrap:wrap; gap:22px; }
+  .card { background:#fff; border:1px solid #efeaf7; border-radius:18px; padding:14px; text-align:center; box-shadow:0 8px 22px rgba(111,75,189,.07); }
+  .card img { display:block; }
+  .states .card img { width:150px; height:150px; }
+  .avatars .card img { width:120px; height:120px; }
+  .n { margin-top:8px; font-weight:600; text-transform:capitalize; }
+</style>
+</head>
+<body>
+  <h1>Mimi — Motion</h1>
+  <p class="sub">Web-ready animated SVGs. Looping, vector-crisp, no JS. 10 states + 10 avatars.</p>
+  <h2>States</h2>
+  <div class="grid states" id="states"></div>
+  <h2>Avatars</h2>
+  <div class="grid avatars" id="avatars"></div>
+  <script>
+    const names = ["idle","listening","thinking","concerned","celebrating","resting","encouraging","waiting","reassurance","typing"];
+    const pad = (i) => String(i + 1).padStart(2, "0");
+    const mount = (sel, dir) => {
+      const el = document.getElementById(sel);
+      names.forEach((n, i) => {
+        el.innerHTML += `<div class="card"><img src="./${dir}/${pad(i)}-${n}.svg" alt="${n}"><div class="n">${n}</div></div>`;
+      });
+    };
+    mount("states", "states");
+    mount("avatars", "avatars");
+  </script>
+</body>
+</html>

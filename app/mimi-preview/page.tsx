@@ -25,21 +25,12 @@ export default function MimiPreviewPage() {
       }}
     >
       <div className="w-full max-w-xl text-center">
-        <p
-          className="text-xs font-medium tracking-[0.2em] uppercase"
-          style={{ color: "var(--color-muted)" }}
-        >
-          Mimi · companion v1
-        </p>
         <h1
-          className="mt-2 text-2xl font-semibold"
+          className="text-2xl font-semibold"
           style={{ color: "var(--color-ink)" }}
         >
           State preview
         </h1>
-        <p className="mt-1 text-sm" style={{ color: "var(--color-muted)" }}>
-          A calm co-pilot — switch states to review each animation.
-        </p>
       </div>
 
       {/* stage */}
@@ -97,10 +88,6 @@ export default function MimiPreviewPage() {
           );
         })}
       </div>
-
-      <p className="mt-10 text-xs" style={{ color: "var(--color-muted)" }}>
-        Tip: enable “Reduce motion” in your OS to preview the calm static fallback.
-      </p>
     </main>
   );
 }
