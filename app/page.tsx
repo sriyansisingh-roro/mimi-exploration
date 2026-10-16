@@ -124,6 +124,89 @@ function Card({ card }: { card: CharCard }) {
   );
 }
 
+// Featured: the finalized animated set (states, avatars, admin) on /mimi-motion
+const FINAL_PREVIEW = [
+  { src: "/mimi-motion-svg/states/01-idle.svg", alt: "Idle" },
+  { src: "/mimi-motion-svg/states/03-thinking.svg", alt: "Thinking" },
+  { src: "/mimi-motion-svg/states/05-celebrating.svg", alt: "Celebrating" },
+  { src: "/mimi-admin-concepts/p1-focused.svg", alt: "Admin" },
+];
+
+function FinalCard() {
+  return (
+    <Link
+      href="/mimi-motion"
+      style={{
+        display: "block",
+        textDecoration: "none",
+        background: "#fff",
+        border: `1px solid ${C.line}`,
+        borderRadius: 28,
+        overflow: "hidden",
+        boxShadow: "0 1px 2px rgba(37,42,68,.04), 0 30px 70px -50px rgba(37,42,68,.35)",
+      }}
+    >
+      <div
+        style={{
+          display: "flex",
+          flexWrap: "wrap",
+          justifyContent: "center",
+          gap: 20,
+          padding: "36px 24px",
+          background: `linear-gradient(135deg, ${C.warm} 0%, ${C.bg} 45%, ${C.cool} 100%)`,
+          borderBottom: `1px solid ${C.line}`,
+        }}
+      >
+        {FINAL_PREVIEW.map((p) => (
+          <img key={p.src} src={p.src} alt={p.alt} width={150} height={150} style={{ borderRadius: 16 }} />
+        ))}
+      </div>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          gap: 16,
+          flexWrap: "wrap",
+          padding: "22px 28px 24px",
+        }}
+      >
+        <div>
+          <h2
+            style={{
+              margin: 0,
+              fontFamily: "var(--font-instrument)",
+              fontWeight: 400,
+              fontSize: 34,
+              letterSpacing: "-0.01em",
+              color: C.ink,
+            }}
+          >
+            Final Mimi
+          </h2>
+          <p style={{ margin: "4px 0 0", fontSize: 14, color: C.soft }}>States · Avatars · Admin</p>
+        </div>
+        <span
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: 8,
+            padding: "12px 22px",
+            borderRadius: 999,
+            background: C.primary,
+            color: "#fff",
+            fontSize: 15,
+            fontWeight: 600,
+            boxShadow: "0 18px 40px -22px rgba(108,115,255,.8)",
+          }}
+        >
+          Open <span aria-hidden>→</span>
+        </span>
+      </div>
+    </Link>
+  );
+}
+
 export default function Home() {
   return (
     <div
@@ -135,7 +218,7 @@ export default function Home() {
       }}
     >
       <div style={{ maxWidth: 1180, margin: "0 auto", padding: "72px 40px 90px" }}>
-        <header style={{ textAlign: "center", marginBottom: 48 }}>
+        <header style={{ textAlign: "center", marginBottom: 40 }}>
           <h1
             style={{
               margin: 0,
@@ -147,10 +230,23 @@ export default function Home() {
               color: C.ink,
             }}
           >
-            Four ways to meet Mimi.
+            Meet Mimi.
           </h1>
         </header>
 
+        <FinalCard />
+
+        <h2
+          style={{
+            margin: "72px 0 20px",
+            fontFamily: "var(--font-instrument)",
+            fontWeight: 400,
+            fontSize: 30,
+            color: C.ink,
+          }}
+        >
+          Earlier explorations
+        </h2>
         <div
           style={{
             display: "grid",
@@ -162,28 +258,6 @@ export default function Home() {
             <Card key={c.key} card={c} />
           ))}
         </div>
-
-        <div style={{ display: "flex", justifyContent: "center", marginTop: 40 }}>
-          <Link
-            href="/mimi-motion"
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: 8,
-              padding: "14px 26px",
-              borderRadius: 999,
-              background: C.primary,
-              color: "#fff",
-              textDecoration: "none",
-              fontSize: 16,
-              fontWeight: 600,
-              boxShadow: "0 18px 40px -22px rgba(108,115,255,.8)",
-            }}
-          >
-            See Mimi in motion <span aria-hidden>→</span>
-          </Link>
-        </div>
-
       </div>
     </div>
   );
