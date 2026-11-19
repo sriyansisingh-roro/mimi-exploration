@@ -50,3 +50,18 @@ Each animation layers three things, tuned per mood:
 
 States: `idle, listening, thinking, concerned, celebrating, resting,
 encouraging, waiting, reassurance, typing`.
+
+## Dark theme
+
+`dark/states/` and `dark/avatars/` hold the same twenty animations with the
+body recoloured for dark surfaces. Taken from the Figma dark frame, the only
+difference is the purple ramp:
+
+| light     | dark      |
+|-----------|-----------|
+| `#ECE6FC` | `#E6DDFA` |
+| `#C9BDF1` | `#B6A2E6` |
+| `#A78FDE` | `#8674C6` |
+
+Ink, cheeks, glow orb, the avatar circle and its ring are identical in both,
+so pick the folder by surface and nothing else changes.
