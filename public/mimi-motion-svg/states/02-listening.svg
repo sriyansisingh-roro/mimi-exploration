@@ -5,6 +5,7 @@
 .orb{transform-box:fill-box;transform-origin:center;animation:glo 2.4s ease-in-out infinite}
 @keyframes glo{0%,100%{opacity:.72;transform:scale(.92)}50%{opacity:1;transform:scale(1.12)}}
 .ear{transform-box:fill-box;transform-origin:100% 50%}.ear1{animation:ear 1.7s ease-in-out infinite}.ear2{animation:ear 1.7s ease-in-out .35s infinite}@keyframes ear{0%,100%{opacity:.4;transform:scale(.82)}50%{opacity:1;transform:scale(1.1)}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important}}
 </style>
 <rect width="150" height="150" rx="16" fill="#F5F2FC"/>
 <g transform="translate(5,5)"><path opacity="0.07" d="M70 128.1C87.7836 128.1 102.2 125.906 102.2 123.2C102.2 120.494 87.7836 118.3 70 118.3C52.2165 118.3 37.8 120.494 37.8 123.2C37.8 125.906 52.2165 128.1 70 128.1Z" fill="#3A3460"/><g class="body" fill="none">
