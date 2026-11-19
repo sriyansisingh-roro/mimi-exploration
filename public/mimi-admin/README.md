@@ -33,3 +33,9 @@ The hat is the one exception: at its full-body position it overhangs the tight
 avatar crop, so it is seated lower on the head and scaled to 0.92.
 
 Both files honour `prefers-reduced-motion`.
+
+## Dark theme
+
+`dark/state.svg` and `dark/avatar.svg` are the same artwork with the body
+recoloured for dark surfaces, using the same purple ramp as
+`../mimi-motion-svg/dark/`. The dark avatar has no hat either.
