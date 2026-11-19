@@ -7,7 +7,7 @@
 .qb{transform-box:fill-box;transform-origin:center;animation:qb 2.6s ease-in-out infinite}@keyframes qb{0%,100%{transform:translateY(0)}50%{transform:translateY(-2.4px)}}.tw{transform-box:fill-box;transform-origin:center;animation:tw 2.2s ease-in-out infinite}@keyframes tw{0%,100%{opacity:.3;transform:scale(.7)}50%{opacity:1;transform:scale(1.15)}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important}}
 </style>
-<rect width="150" height="150" rx="16" fill="#F5F2FC"/>
+<rect width="150" height="150" rx="16" fill="#241F2E"/>
 <g transform="translate(5,5)"><path opacity="0.07" d="M70 128.1C87.7836 128.1 102.2 125.906 102.2 123.2C102.2 120.494 87.7836 118.3 70 118.3C52.2165 118.3 37.8 120.494 37.8 123.2C37.8 125.906 52.2165 128.1 70 128.1Z" fill="#3A3460"/><g class="body" fill="none">
 
 <g opacity="0.85">
