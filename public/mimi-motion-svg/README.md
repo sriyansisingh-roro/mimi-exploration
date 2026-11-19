@@ -18,6 +18,21 @@ review.html                        (open in a browser to preview all 20)
 // or inline the SVG to control via CSS
 ```
 
+## Reduced motion
+
+Every file carries its own guard:
+
+```css
+@media(prefers-reduced-motion:reduce){*{animation:none!important}}
+```
+
+When the viewer has asked their system for reduced motion, the mascot settles
+to its static pose instead of looping. The guard lives inside each SVG rather
+than in the host app's stylesheet, so it still applies when the file is used
+as an `<img>`, where outside CSS cannot reach it. Nothing disappears when the
+animation is suppressed: no animated element depends on its keyframes to
+become visible.
+
 ## Motion model (per state)
 
 Each animation layers three things, tuned per mood:

@@ -5,6 +5,7 @@
 .orb{transform-box:fill-box;transform-origin:center;animation:glo 2.4s ease-in-out infinite}
 @keyframes glo{0%,100%{opacity:.72;transform:scale(.92)}50%{opacity:1;transform:scale(1.12)}}
 .av{transform-box:fill-box;transform-origin:100% 50%;opacity:0}.v1{animation:av 1.8s ease-out infinite}.v2{animation:av 1.8s ease-out .6s infinite}@keyframes av{0%{opacity:.9;transform:scale(.5)}100%{opacity:0;transform:scale(1.25)}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important}}
 </style>
 <g class="body" fill="none">
 <path d="M66.0001 130.9C101.843 130.9 130.9 101.843 130.9 66C130.9 30.1567 101.843 1.09998 66.0001 1.09998C30.1568 1.09998 1.1001 30.1567 1.1001 66C1.1001 101.843 30.1568 130.9 66.0001 130.9Z" fill="url(#paint0_radial_1298_474)"/>
