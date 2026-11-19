@@ -63,5 +63,18 @@ difference is the purple ramp:
 | `#C9BDF1` | `#B6A2E6` |
 | `#A78FDE` | `#8674C6` |
 
-Ink, cheeks, glow orb, the avatar circle and its ring are identical in both,
-so pick the folder by surface and nothing else changes.
+The artwork also bakes in its own surface, a plate behind each state and a disc
+behind each avatar, so the dark files recolour those too:
+
+| light     | dark      |                    |
+|-----------|-----------|--------------------|
+| `#F5F2FC` | `#241F2E` | state plate        |
+| `#FCFBFF` | `#2C2635` | avatar disc, inner |
+| `#EEE9FB` | `#241F2E` | avatar disc, outer |
+| `#E4DEF4` | `#3B3348` | avatar ring        |
+
+The Figma dark frame leaves these light because it sits on a white board. An
+asset meant for a dark surface cannot carry a light card with it, so these four
+values differ from Figma on purpose. Everything else matches.
+
+Ink, cheeks and the glow orb are identical in both themes.

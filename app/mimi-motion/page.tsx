@@ -44,23 +44,29 @@ const SECTIONS = [
   { id: "states", label: "States" },
   { id: "avatars", label: "Avatars" },
   { id: "admin", label: "Admin" },
+  { id: "dark", label: "Dark" },
 ];
 
 const pad = (i: number) => String(i + 1).padStart(2, "0");
 
+// Dark mascots only read against a dark surface, so the dark tiles carry their own.
+const D = { card: "#241F2E", stage: "#1A1822", line: "#352E42", ink: "#F3F0F7", soft: "#A09BA8" };
+
 function Tile({
-  src, label, caption, size,
-}: { src: string; label: string; caption?: string; size: number }) {
+  src, label, caption, size, dark = false,
+}: { src: string; label: string; caption?: string; size: number; dark?: boolean }) {
   return (
     <div
       style={{
         display: "flex",
         flexDirection: "column",
-        background: "#fff",
-        border: `1px solid ${C.line}`,
+        background: dark ? D.card : "#fff",
+        border: `1px solid ${dark ? D.line : C.line}`,
         borderRadius: 24,
         overflow: "hidden",
-        boxShadow: "0 1px 2px rgba(37,42,68,.04), 0 26px 60px -48px rgba(37,42,68,.4)",
+        boxShadow: dark
+          ? "0 1px 2px rgba(0,0,0,.3), 0 26px 60px -48px rgba(0,0,0,.7)"
+          : "0 1px 2px rgba(37,42,68,.04), 0 26px 60px -48px rgba(37,42,68,.4)",
       }}
     >
       <div
@@ -68,8 +74,10 @@ function Tile({
           height: 200,
           display: "grid",
           placeItems: "center",
-          background: `linear-gradient(135deg, ${C.warm} 0%, ${C.bg} 45%, ${C.cool} 100%)`,
-          borderBottom: `1px solid ${C.line}`,
+          background: dark
+            ? D.stage
+            : `linear-gradient(135deg, ${C.warm} 0%, ${C.bg} 45%, ${C.cool} 100%)`,
+          borderBottom: `1px solid ${dark ? D.line : C.line}`,
         }}
       >
         {/* animated SVG plays natively in <img> */}
@@ -83,14 +91,14 @@ function Tile({
             fontWeight: 400,
             fontSize: 24,
             letterSpacing: "-0.01em",
-            color: C.ink,
+            color: dark ? D.ink : C.ink,
             textTransform: "capitalize",
           }}
         >
           {label}
         </h3>
         {caption ? (
-          <p style={{ margin: "4px 0 0", fontSize: 13, lineHeight: 1.45, color: C.soft }}>{caption}</p>
+          <p style={{ margin: "4px 0 0", fontSize: 13, lineHeight: 1.45, color: dark ? D.soft : C.soft }}>{caption}</p>
         ) : null}
       </div>
     </div>
@@ -207,6 +215,64 @@ export default function MimiMotion() {
         >
           <Tile src={ADMIN.state} label="Admin" caption="“All checked. Looks good.”" size={150} />
           <Tile src={ADMIN.avatar} label="Avatar" size={120} />
+        </div>
+
+        <h2 id="dark" style={{ fontFamily: "var(--font-instrument)", fontWeight: 400, fontSize: 28, color: C.ink, margin: "56px 0 4px" }}>
+          Dark
+        </h2>
+        <p style={{ margin: "0 0 22px", fontSize: 14, color: C.soft }}>
+          The same artwork with the body recoloured for dark surfaces. Shown on dark, since that is
+          the only place it can be judged.
+        </p>
+
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 220px), 1fr))",
+            gap: 22,
+          }}
+        >
+          {STATES.map((n, i) => (
+            <Tile
+              key={`ds-${n}`}
+              src={`/mimi-motion-svg/dark/states/${pad(i)}-${n}.svg`}
+              label={n}
+              caption={CAPTIONS[n]}
+              size={150}
+              dark
+            />
+          ))}
+        </div>
+
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 170px), 1fr))",
+            gap: 22,
+            marginTop: 22,
+          }}
+        >
+          {STATES.map((n, i) => (
+            <Tile
+              key={`da-${n}`}
+              src={`/mimi-motion-svg/dark/avatars/${pad(i)}-${n}.svg`}
+              label={n}
+              size={120}
+              dark
+            />
+          ))}
+        </div>
+
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 220px), 1fr))",
+            gap: 22,
+            marginTop: 22,
+          }}
+        >
+          <Tile src="/mimi-admin/dark/state.svg" label="Admin" caption="“All checked. Looks good.”" size={150} dark />
+          <Tile src="/mimi-admin/dark/avatar.svg" label="Avatar" size={120} dark />
         </div>
 
       </div>
