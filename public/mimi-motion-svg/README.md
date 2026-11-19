@@ -69,12 +69,16 @@ behind each avatar, so the dark files recolour those too:
 | light     | dark      |                    |
 |-----------|-----------|--------------------|
 | `#F5F2FC` | `#241F2E` | state plate        |
-| `#FCFBFF` | `#2C2635` | avatar disc, inner |
+| `#FCFBFF` | `#241F2E` | avatar disc, inner |
 | `#EEE9FB` | `#241F2E` | avatar disc, outer |
 | `#E4DEF4` | `#3B3348` | avatar ring        |
 
 The Figma dark frame leaves these light because it sits on a white board. An
 asset meant for a dark surface cannot carry a light card with it, so these four
 values differ from Figma on purpose. Everything else matches.
+
+The avatar disc is a gradient in light. On dark both stops take the plate
+colour, so an avatar and a state sit on exactly the same ground; the ring still
+defines the circular crop.
 
 Ink, cheeks and the glow orb are identical in both themes.
